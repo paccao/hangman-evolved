@@ -21,10 +21,17 @@ function App() {
       margin: "0 auto",
       alignItems: "center",
     }}>
-      <p style={{ fontSize: "2rem", textAlign: "center" }}>Lose Win</p>
+      <p style={{
+        fontSize: "2rem",
+        textAlign: "center"
+      }}>Lose Win</p>
       <HangmanDrawing />
       <HangmanWord />
-      <Keyboard />
+      <div style={{
+        alignSelf: "stretch"
+      }}>
+        <Keyboard />
+      </div>
     </div >
   )
 }
