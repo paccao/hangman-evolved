@@ -13,7 +13,6 @@ const HEAD = (
 		right: "-30px"
 	}}></div>
 )
-
 const BODY = (
 	<div style={{
 		width: "10px",
@@ -73,14 +72,14 @@ const LEFT_LEG = (
 	}}></div>
 )
 
-export const HangmanDrawing: FC = (): ReactElement => {
+const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG]
+
+type HangmanDrawingProps = {
+	numberOfGuesses: number
+}
+export const HangmanDrawing: FC<HangmanDrawingProps> = ({ numberOfGuesses }): ReactElement => {
 	return <section style={{ position: "relative" }}>
-		{HEAD}
-		{BODY}
-		{RIGHT_ARM}
-		{LEFT_ARM}
-		{RIGHT_LEG}
-		{LEFT_LEG}
+		{BODY_PARTS.slice(0, numberOfGuesses)}
 		<div style={{
 			height: "50px",
 			width: "10px",
