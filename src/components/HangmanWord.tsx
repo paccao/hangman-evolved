@@ -2,9 +2,13 @@ import {
 	ReactElement, FC
 } from 'react'
 
-export const HangmanWord: FC = (): ReactElement => {
-	const word = "test"
-	const guessedLetters = ["t"]
+type HangmanWordProps = {
+	guessedLetters: string[]
+	wordToGuess: string
+}
+
+export const HangmanWord: FC<HangmanWordProps> = ({ guessedLetters, wordToGuess }): ReactElement => {
+
 	return <section style={{
 		display: "flex",
 		gap: ".25em",
@@ -14,7 +18,7 @@ export const HangmanWord: FC = (): ReactElement => {
 		fontFamily: "monospace"
 	}}>
 		<p>
-			{word.split("").map((letter, index) => (
+			{wordToGuess.split("").map((letter, index) => (
 				<span key={index} style={{
 					borderBottom: ".1em solid white"
 				}}>
