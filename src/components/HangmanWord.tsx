@@ -5,9 +5,10 @@ import {
 type HangmanWordProps = {
 	guessedLetters: string[]
 	wordToGuess: string
+	reveal: boolean
 }
 
-export const HangmanWord: FC<HangmanWordProps> = ({ guessedLetters, wordToGuess }): ReactElement => {
+export const HangmanWord: FC<HangmanWordProps> = ({ guessedLetters, wordToGuess, reveal = false }): ReactElement => {
 
 	return <section style={{
 		display: "flex",
@@ -23,9 +24,10 @@ export const HangmanWord: FC<HangmanWordProps> = ({ guessedLetters, wordToGuess 
 					borderBottom: ".1em solid white"
 				}}>
 					<span style={{
-						visibility: guessedLetters.includes(letter)
+						visibility: guessedLetters.includes(letter) || reveal
 							? "visible"
-							: "hidden"
+							: "hidden",
+						color: !guessedLetters.includes(letter) && reveal ? "red" : "white"
 					}}>
 						{letter}
 					</span>

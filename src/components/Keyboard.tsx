@@ -33,12 +33,13 @@ const KEYS = [
 ]
 
 type KeyboardProps = {
+	disabled?: boolean
 	activeLetters: string[]
 	inactiveLetters: string[]
 	addGuessedLetter: (letter: string) => void
 }
 
-export const Keyboard: FC<KeyboardProps> = ({ activeLetters, inactiveLetters, addGuessedLetter }): ReactElement => {
+export const Keyboard: FC<KeyboardProps> = ({ activeLetters, inactiveLetters, addGuessedLetter, disabled = false }): ReactElement => {
 	return <section style={{
 		display: "grid",
 		gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))",
@@ -53,7 +54,7 @@ export const Keyboard: FC<KeyboardProps> = ({ activeLetters, inactiveLetters, ad
 					${isActive ? styles.active : ""}
 					${isInactive ? styles.inactive : ""
 						}`}
-					disabled={isInactive || isActive}
+					disabled={isInactive || isActive || disabled}
 					key={key}>
 					{key}
 				</button>
